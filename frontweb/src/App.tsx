@@ -1,10 +1,12 @@
 import './assets/styles/custom.scss';
+import Home from 'pages/Home';
 
 import './App.css';
 
+
 const App = () => {
   return (
-    <h1>Ola</h1>
+    <Home/>
   );
 }
 
