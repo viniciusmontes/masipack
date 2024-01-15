@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import { getAuthData } from './storage';
 
 
 export const BASE_URL =
@@ -24,7 +25,7 @@ export const requestBackend = (config: AxiosRequestConfig) => {
     ? {
         ...config.headers,
         Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQVRNIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3MDUzNDM3MzR9.XeuSoBS_9iOqeuGAtCec7N44YP3Zo9EP-9DLNdMh9YY',
+          'Bearer ' + getAuthData().access_token,
       }
     : config.headers;
 
