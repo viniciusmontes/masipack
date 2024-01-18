@@ -1,10 +1,14 @@
 import { requestBackendLogin } from 'util/requests';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router';
 import { useLocation } from 'react-router';
+import { useContext, useState } from 'react';
+import { getTokenData } from 'util/auth';
+import { AuthContext } from 'AuthContext';
+import { saveAuthData } from 'util/storage';
 
 import './styles.css';
+
 
 
 
@@ -14,16 +18,17 @@ type FormData = {
 };
 
 type LocationState = {
-  from: string
-}
+  from: string;
+};
 
 const Login = () => {
-
   const location = useLocation<LocationState>();
 
-  const {from} = location.state || {from: {pathname: '/home'}}
+  const { from } = location.state || { from: { pathname: '/admin' } };
 
   const [hasError, setHasError] = useState(false);
+
+  const { setAuthContextData } = useContext(AuthContext);
 
   const {
     register,
@@ -32,17 +37,20 @@ const Login = () => {
   } = useForm<FormData>();
 
   const history = useHistory();
-
   const onSubmit = (formData: FormData) => {
     requestBackendLogin(formData)
       .then((response) => {
-        console.log(response.data);
+        saveAuthData(response.data);
         setHasError(false);
-        history.replace(from)
+        setAuthContextData({
+          authenticated: true,
+          tokenData: getTokenData(),
+        });
+        history.replace(from);
       })
       .catch((error) => {
         setHasError(true);
-        console.log('ERRO', error);
+        console.log('erro', error);
       });
   };
 
@@ -50,9 +58,7 @@ const Login = () => {
     <div className="base-card login-card">
       <h1>LOGIN</h1>
       {hasError && (
-        <div className="alert alert-danger">
-          Erro ao tentar efetuar o login
-        </div>
+        <div className="alert alert-danger">Erro ao tentar efetuar o login</div>
       )}
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
@@ -86,7 +92,7 @@ const Login = () => {
           </div>
         </div>
         <div className="login-submit">
-          <button className='btn btn-primary btn-icon'>Fazer Login</button>
+          <button className="btn btn-primary btn-icon">Fazer Login</button>
         </div>
       </form>
     </div>

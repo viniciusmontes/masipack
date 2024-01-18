@@ -1,6 +1,6 @@
-import PrivateRoute from 'components/PrivateRoute';
+import Admin from 'pages/Admin';
 import Auth from 'pages/Auth';
-import Home from 'pages/Home';
+
 import { Route, Router, Switch } from 'react-router-dom';
 import history from 'util/history';
 
@@ -11,9 +11,9 @@ const Routes = () => {
         <Route path="/" exact>
           <Auth />
         </Route>
-        <PrivateRoute path='/home'>
-            <Home/>
-        </PrivateRoute>
+        <Route path="/admin">
+          <Admin />
+        </Route>
       </Switch>
     </Router>
   );
