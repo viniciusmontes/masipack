@@ -1,12 +1,14 @@
 import { Route, Switch } from 'react-router';
 import Sidebar from './Sidebar';
 import Configures from './Configures';
-import Permission from './Permission';
-import PermissionGroup from './PermissionGroup';
-import SecurityPolicy from './SecurityPolicy';
+import PermissionView from './PermissionView';
+import PermissionGroupView from './PermissionGroupView';
+import UsersView from './UsersView';
+import SecurityPolicyView from './SecurityPolicyView';
+import SupportView from './SupportView';
+import RepportsView from './RepportsView';
 
 import './styles.css';
-
 
 const Admin = () => {
   return (
@@ -16,19 +18,25 @@ const Admin = () => {
         <div className="admin-content">
           <Switch>
             <Route path="/admin/configures">
-              <Configures/>
+              <Configures />
             </Route>
             <Route path="/admin/permissions">
-              <Permission/>
+              <PermissionView />
             </Route>
             <Route path="/admin/politic">
-              <SecurityPolicy/>
+              <SecurityPolicyView />
             </Route>
             <Route path="/admin/group">
-              <PermissionGroup/>
+              <PermissionGroupView />
             </Route>
             <Route path="/admin/users">
-              <h1>Usuários</h1>
+              <UsersView />
+            </Route>
+            <Route path="/admin/repports">
+              <RepportsView />
+            </Route>
+            <Route path="/admin/support">
+              <SupportView />
             </Route>
           </Switch>
         </div>

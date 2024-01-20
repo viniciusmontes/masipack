@@ -1,5 +1,5 @@
 import { ReactComponent as Logo } from 'assets/images/masipack-logo.svg';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
 import './styles.css';
@@ -7,11 +7,8 @@ import './styles.css';
 const Sidebar = () => {
   const [isSubMenuVisible, setIsSubMenuVisible] = useState(false);
 
-  const history = useHistory();
-
   const toggleSubMenu = () => {
     setIsSubMenuVisible(!isSubMenuVisible);
-    history.push('/admin/permissions');
   };
 
   return (
@@ -29,6 +26,9 @@ const Sidebar = () => {
             onClick={toggleSubMenu}
           >
             <p>Gestão de acessos</p>
+            <span className={`arrow ${isSubMenuVisible ? 'up' : 'down'}`}>
+              &#9660;
+            </span>
           </div>
           {isSubMenuVisible && (
             <ul>
@@ -54,6 +54,16 @@ const Sidebar = () => {
               </li>
             </ul>
           )}
+        </li>
+        <li>
+          <NavLink to="/admin/repports" className="admin-nav-item">
+            <p>Relátorios</p>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/admin/support" className="admin-nav-item">
+            <p>Suporte</p>
+          </NavLink>
         </li>
       </ul>
     </nav>

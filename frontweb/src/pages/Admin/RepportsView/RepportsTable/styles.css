@@ -1,0 +1,19 @@
+.repports-form-control-container {
+  margin-bottom: 16px;
+  max-width: 300px;
+}
+
+.repports-form-control {
+  width: 100%;
+  height: 46px;
+  background-color: #1b2531;
+  border: 1px solid #384459;
+  border-radius: 5px;
+  color: #9aaabe;
+  padding: 0 20px;
+  font-size: 18px;
+}
+.repports-table {
+  table-layout: fixed;
+  width: 100%;
+}

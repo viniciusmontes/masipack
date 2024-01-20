@@ -9,7 +9,7 @@
 }
 
 .admin-nav-container svg {
-  width: 100%;
+  width: 300px;
 }
 .admin-nav-item {
   display: flex;
@@ -28,11 +28,30 @@
   background-color: rgba(64, 123, 255, 0.3);
   color: #407bff;
 }
+.admin-nav-item:hover {
+  font-weight: bold;
+  color: #407bff;
+}
 
 .admin-nav-item p {
   margin-bottom: 0;
 }
 
-.admin-sub-menu p {
+.admin-sub-menu {
+  cursor: pointer;
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.arrow.up {
+  transform: translateY(-50%) rotate(-180deg);
   color: #407bff;
 }

@@ -1,0 +1,7 @@
+.permission-group-table-header {
+    color: #001a71;
+}
+.permission-group-table {
+    table-layout: fixed; 
+  width: 100%;
+}

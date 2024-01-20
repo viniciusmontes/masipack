@@ -1,0 +1,28 @@
+.permission-group-crud-container {
+    width: 100%;
+    padding: 10px;
+  }
+  .permission-group-crud-title {
+    margin-bottom: 10px;
+  }
+  .permission-group-crud-inputs-container {
+    display: flex;
+    align-items: center;
+  }
+  .permission-group-crud-inputs-container label {
+    margin-right: 10px;
+    color: #001a71;
+    font-weight: bold;
+  }
+  .permission-group-crud-inputs-label-right label {
+    margin-left: 10px;
+  }
+  .permission-group-crud-buttons-container {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+  .permission-group-crud-buttons-container button {
+      margin-right: 10px;
+  }
+  

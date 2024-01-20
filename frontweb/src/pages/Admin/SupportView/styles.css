@@ -1,0 +1,10 @@
+.support-view-container {
+  padding: 20px;
+}
+.support-view-container h1 {
+  color: #001a71;
+  margin-bottom: 10px;
+}
+.support-view-container p {
+    font-weight: bold;
+}

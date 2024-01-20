@@ -12,18 +12,24 @@ h5,
 h6 {
   font-weight: 700;
   margin-bottom: 0;
+  color: #001a71;
 }
 
 ul {
   list-style-type: none;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 a,
 a:hover {
   text-decoration: none;
   color: unset;
+}
+
+label {
+  font-weight: bold;
+  color: #001a71;
 }
 
 .base-card {

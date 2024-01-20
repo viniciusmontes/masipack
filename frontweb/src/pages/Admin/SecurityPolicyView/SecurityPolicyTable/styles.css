@@ -1,0 +1,11 @@
+.security-policy-table-container {
+}
+.security-policy-table {
+  table-layout: fixed;
+  width: 100%;
+  font-size: 12px;
+}
+.security-policy-table-header {
+  font-weight: bold;
+    color: #001a71;
+}
