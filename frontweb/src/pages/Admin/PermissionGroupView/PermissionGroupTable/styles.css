@@ -1,7 +1,8 @@
 .permission-group-table-header {
-    color: #001a71;
+  color: #001a71;
 }
 .permission-group-table {
-    table-layout: fixed; 
+  table-layout: fixed;
   width: 100%;
+  overflow-y: auto;
 }

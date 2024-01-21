@@ -8,6 +8,7 @@ import './styles.css';
 
 type Props = {
   onInsertPermission: (permission: Permission) => void;
+  onEditingPermission: (permission: Permission) => void;
   selectedPermission: Permission | null;
 };
 
@@ -16,8 +17,12 @@ type FormData = {
   description: string;
 };
 
-const PermissionForm = ({ onInsertPermission, selectedPermission }: Props) => {
-  const { register, handleSubmit, setValue } = useForm<FormData>();
+const PermissionForm = ({
+  onInsertPermission,
+  onEditingPermission,
+  selectedPermission,
+}: Props) => {
+  const { register, handleSubmit, setValue, reset } = useForm<FormData>();
 
   useEffect(() => {
     if (selectedPermission) {
@@ -38,9 +43,13 @@ const PermissionForm = ({ onInsertPermission, selectedPermission }: Props) => {
 
     requestBackend(params)
       .then((response) => {
-        setValue('code', '');
-        setValue('description', '');
-        onInsertPermission(response.data);
+        if (!selectedPermission) {
+          reset();
+          onInsertPermission(response.data);
+        } else {
+          reset();
+          onEditingPermission(response.data);
+        }
       })
       .catch((error) => {
         console.log(error);

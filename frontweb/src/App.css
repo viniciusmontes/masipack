@@ -31,6 +31,9 @@ label {
   font-weight: bold;
   color: #001a71;
 }
+input {
+  border: solid 0.5px;
+}
 
 .base-card {
   background-color: #fff;
@@ -47,4 +50,12 @@ label {
 
 .base-input::placeholder {
   color: #9e9e9e;
+}
+.btn-table-editar {
+  color: #fff;
+  background-color: #001a71;
+  margin-right: 10px;
+}
+.btn-table-excluir {
+  color: #fff;
 }

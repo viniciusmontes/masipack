@@ -39,9 +39,9 @@ const UsersForm = ({ onInsertUser }: Props) => {
 
   return (
     <div className="users-form-crud-container">
-      <h1 className="users-from-crud-title">Usuários</h1>
+      <h1 className="users-form-crud-title">Usuários</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="users-crud-inputs-container">
+        <div className="users-form-crud-inputs-container">
           <label>Login</label>
           <input
             {...register('login')}
@@ -63,14 +63,23 @@ const UsersForm = ({ onInsertUser }: Props) => {
             type="text"
             className="base-input"
           />
+          <div className="users-form-crud-select-container">
+            <label>Ativo</label>
+            <select
+              {...register('active')}
+              name="active"
+              defaultValue="true"
+              className="base-input"
+            >
+              <option value="true">Sim</option>
+              <option value="false">Não</option>
+            </select>
+          </div>
 
-          <label>Ativo</label>
-          <select {...register('active')} name="active" defaultValue="true">
-            <option value="true">Sim</option>
-            <option value="false">Não</option>
-          </select>
-          <button className="btn btn-primary">SALVAR</button>
-          <button className="btn btn-primary">CANCELAR</button>
+          <div className="users-form-crud-container-buttons">
+            <button className="btn btn-primary">SALVAR</button>
+            <button className="btn btn-primary">CANCELAR</button>
+          </div>
         </div>
       </form>
     </div>

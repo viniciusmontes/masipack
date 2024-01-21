@@ -34,12 +34,20 @@ const PermissionView = () => {
     setPermissions(clone);
   };
 
-  const handleEditingPermission = (permission: Permission) => {
-    const updatedPermissions = permissions.map((p) =>
-      p.accessKey === permission.accessKey ? permission : p
+  const handleEditingPermission = (editedPermission: Permission) => {
+    const updatedPermissions = [...permissions];
+
+    const index = updatedPermissions.findIndex(
+      (p) => p.accessKey === editedPermission.accessKey
     );
 
-    setPermissions(updatedPermissions);
+    if (index !== -1) {
+      updatedPermissions[index] = editedPermission;
+
+      setPermissions(updatedPermissions);
+    }
+
+    setSelectedPermission(null);
   };
 
   const handleSelectedPermission = (permission: Permission) => {
@@ -50,6 +58,7 @@ const PermissionView = () => {
     <div className="permission-view-container">
       <PermissionForm
         onInsertPermission={handleInsertPermission}
+        onEditingPermission={handleEditingPermission}
         selectedPermission={selectedPermission}
       />
       <PermissionTable

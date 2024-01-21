@@ -53,9 +53,9 @@ const UsersTable = ({ user, onDelete }: Props) => {
               <td>{renderEnableAd(user.active)}</td>
               <td>{renderEnableAd(user.firstAccess)}</td>
               <td>
-                <button className="btn btn-warning btn-sm">Editar</button>
+                <button className="btn btn-warning btn-sm btn-table-editar">Editar</button>
                 <button
-                  className="btn btn-danger btn-sm ml-2"
+                  className="btn btn-danger btn-sm ml-2 btn-table-excluir"
                   onClick={() => handleDelete(user.accessKey as string)}
                 >
                   Excluir

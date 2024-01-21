@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import './styles.css';
 import { Users } from 'util/users';
 import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from 'util/requests';
 import UsersTable from './UsersTable';
 import UsersForm from './UsersForm';
+
+import './styles.css';
 
 const UsersView = () => {
   const [users, setUsers] = useState<Users[]>([]);

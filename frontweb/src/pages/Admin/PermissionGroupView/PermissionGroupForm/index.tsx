@@ -4,9 +4,12 @@ import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from 'util/requests';
 
 import './styles.css';
+import { useEffect } from 'react';
 
 type Props = {
   onInsertPermissionGroup: (permissionGroup: PermissionGroup) => void;
+  onEditingPermissionGroup: (permissionGroup: PermissionGroup) => void;
+  selectedPermissionGroup: PermissionGroup | null;
 };
 
 type FormData = {
@@ -14,13 +17,26 @@ type FormData = {
   description: string;
 };
 
-const PermissionGroupForm = ({ onInsertPermissionGroup }: Props) => {
+const PermissionGroupForm = ({
+  onInsertPermissionGroup,
+  onEditingPermissionGroup,
+  selectedPermissionGroup,
+}: Props) => {
   const { register, handleSubmit, setValue } = useForm<FormData>();
+
+  useEffect(() => {
+    if (selectedPermissionGroup) {
+      setValue('code', selectedPermissionGroup.code);
+      setValue('description', selectedPermissionGroup.description);
+    }
+  }, [selectedPermissionGroup, setValue]);
 
   const onSubmit = (formdata: FormData) => {
     const params: AxiosRequestConfig = {
-      method: 'POST',
-      url: '/permission-group',
+      method: selectedPermissionGroup ? 'PUT' : 'POST',
+      url: selectedPermissionGroup
+        ? `/permission-group/${selectedPermissionGroup.accessKey}`
+        : '/permission-group',
       data: formdata,
       withCredentials: true,
     };
@@ -29,15 +45,19 @@ const PermissionGroupForm = ({ onInsertPermissionGroup }: Props) => {
       .then((response) => {
         setValue('code', '');
         setValue('description', '');
-        onInsertPermissionGroup(response.data);
+        if (!selectedPermissionGroup) {
+          onInsertPermissionGroup(response.data);
+        } else {
+          onEditingPermissionGroup(response.data);
+        }
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const handleButtonCancel = (event : React.MouseEvent) => {
-    event.preventDefault()
+  const handleButtonCancel = (event: React.MouseEvent) => {
+    event.preventDefault();
     setValue('code', '');
     setValue('description', '');
   };
@@ -66,7 +86,9 @@ const PermissionGroupForm = ({ onInsertPermissionGroup }: Props) => {
             </div>
             <div className="permission-group-crud-buttons-container">
               <button className="btn btn-primary">SALVAR</button>
-              <button className="btn btn-primary" onClick={handleButtonCancel}>CANCELAR</button>
+              <button className="btn btn-primary" onClick={handleButtonCancel}>
+                CANCELAR
+              </button>
             </div>
           </div>
         </form>

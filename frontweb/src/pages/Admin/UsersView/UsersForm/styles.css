@@ -1,9 +1,31 @@
 .users-form-crud-container {
-  padding: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.users-form-crud-title {
-  
+.users-form-crud-inputs-container {
 }
-.users-crud-inputs-container {
-  
+
+.users-form-crud-inputs-container input {
+  width: 210px;
+  height: 40px;
+}
+.users-form-crud-inputs-container label {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.users-form-crud-select-container {
+  margin-top: 10px;
+}
+.users-form-crud-container select {
+  width: 100px;
+  height: 40px;
+}
+.users-form-crud-container-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.users-form-crud-container-buttons button {
+  margin-right: 10px;
 }

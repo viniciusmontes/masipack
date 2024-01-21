@@ -7,9 +7,10 @@ import { requestBackend } from 'util/requests';
 type Props = {
   permissionGroup: PermissionGroup[];
   onDelete: Function;
+  onEdit: (permissionGroup: PermissionGroup) => void;
 };
 
-const PermissionGroupTable = ({ permissionGroup, onDelete }: Props) => {
+const PermissionGroupTable = ({ permissionGroup, onDelete, onEdit }: Props) => {
   const handleDelete = (accessKey: string) => {
     if (!window.confirm('Tem certeza que deseja deletar ?')) {
       return;
@@ -42,9 +43,14 @@ const PermissionGroupTable = ({ permissionGroup, onDelete }: Props) => {
               <td>{permissionGroup.code}</td>
               <td>{permissionGroup.description}</td>
               <td>
-                <button className="btn btn-warning btn-sm">Editar</button>
                 <button
-                  className="btn btn-danger btn-sm ml-2"
+                  className="btn btn-warning btn-sm btn-table-editar"
+                  onClick={() => onEdit(permissionGroup)}
+                >
+                  Editar
+                </button>
+                <button
+                  className="btn btn-danger btn-sm ml-2 btn-table-excluir"
                   onClick={() =>
                     handleDelete(permissionGroup.accessKey as string)
                   }

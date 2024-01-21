@@ -34,7 +34,7 @@ const PermissionTable = ({ permission, onDelete, onEdit }: Props) => {
           <tr className="permission-table-header">
             <th>Código</th>
             <th>Descrição</th>
-            <th>Ações</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -43,9 +43,14 @@ const PermissionTable = ({ permission, onDelete, onEdit }: Props) => {
               <td>{permission.code}</td>
               <td>{permission.description}</td>
               <td>
-                <button className="btn btn-warning btn-sm" onClick={() => onEdit(permission)}>Editar</button>
                 <button
-                  className="btn btn-danger btn-sm ml-2"
+                  className="btn btn-warning btn-sm btn-table-editar"
+                  onClick={() => onEdit(permission)}
+                >
+                  Editar
+                </button>
+                <button
+                  className="btn btn-danger btn-sm ml-2 btn-table-salvar"
                   onClick={() => handleDelete(permission.accessKey as string)}
                 >
                   Excluir
